@@ -11,7 +11,7 @@ class CoinGeckoApi {
             .then(currencies => 
                 currencies.flatMap(c => ({
                     id: c.id,
-                    symbol: c.symbol,
+                    symbol: c.symbol.toUpperCase(),
                     name: c.name,
                     image: c.image,
                     price: c.current_price,

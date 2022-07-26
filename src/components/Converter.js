@@ -71,7 +71,7 @@ class Converter extends React.Component {
 
 				<ConverterButton onClick={ () => this.convert() } />
 
-				<ConverterListCurrencies currencies={ this.state.currencies ? this.state.currencies.map(c => c.id) : [] } />
+				<ConverterListCurrencies currencies={ this.state.currencies  ?? [] } />
 			</div>
     	);
 	}
