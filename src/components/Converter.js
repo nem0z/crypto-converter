@@ -1,6 +1,8 @@
 import React from 'react';
 import { ConverterButton } from './ConverterButton';
 import { ConverterField } from './ConverterField';
+import { ConverterListCurrencies } from './ConverterListCurrencies';
+
 
 import CoinGeckoApi from '../modules/CoinGeckoApi';
 
@@ -13,6 +15,7 @@ class Converter extends React.Component {
 			toCurrency: 'usd',
 			toValue: 0.0,
 			gecko: new CoinGeckoApi(),
+			currencies: [],
 		};
 	}
 
@@ -67,6 +70,8 @@ class Converter extends React.Component {
 				/>
 
 				<ConverterButton onClick={ () => this.convert() } />
+
+				<ConverterListCurrencies currencies={ this.state.currencies?.data ? this.state.currencies.data.map(c => c.id) : [] } />
 			</div>
     	);
 	}
