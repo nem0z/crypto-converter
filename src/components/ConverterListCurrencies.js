@@ -17,6 +17,7 @@ class ConverterListCurrencies extends React.Component {
 
     	return (
 			<div>
+                { console.log(this.state) }
                 <input type="text" onChange={ e => this.updateListCurrencies(e.target.value) } />
                 <ul>
                     { this.state.currencies?.map(c => 

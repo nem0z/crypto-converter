@@ -15,7 +15,6 @@ class Converter extends React.Component {
 			toCurrency: 'usd',
 			toValue: 0.0,
 			gecko: new CoinGeckoApi(),
-			currencies: [],
 		};
 	}
 
@@ -23,9 +22,10 @@ class Converter extends React.Component {
 		this.loadCurrencies();
 	}
 
-	async loadCurrencies() {
-		const currencies = await this.state.gecko.getCurrencies()
-		this.setState({...this.state, currencies: currencies});
+	loadCurrencies() {
+		this.state.gecko.getCurrencies().then(currencies => {
+			this.setState({...this.state, currencies: currencies});
+		});
 	} 
 
 	updateFromState(currency, value) {
@@ -45,7 +45,7 @@ class Converter extends React.Component {
 	}
 
 	convert() {
-		const prices = Object.fromEntries(this.state.currencies?.data.map(c => [c.id, c.price]));
+		const prices = Object.fromEntries(this.state.currencies.map(c => [c.id, c.price]));
 		
 		const newToValue = prices[this.state.fromCurrency] * this.state.fromValue / prices[this.state.toCurrency];
 		this.setState({...this.state, toValue: newToValue});
@@ -56,14 +56,14 @@ class Converter extends React.Component {
     	return (
 			<div>
 				<ConverterField 
-					currencies={ this.state.currencies?.data ? this.state.currencies.data.map(c => c.id) : [] }
+					currencies={ this.state.currencies ? this.state.currencies.map(c => c.id) : [] }
 					currency={ this.state.fromCurrency }
 					value={ this.state.fromValue }
 					onChange={ (currency, value) => this.updateFromState(currency, value) }
 				/>
 
 				<ConverterField 
-					currencies={ this.state.currencies?.data ? this.state.currencies.data.map(c => c.id) : [] }
+					currencies={ this.state.currencies ? this.state.currencies.map(c => c.id) : [] }
 					currency={ this.state.toCurrency }
 					value={ this.state.toValue }
 					onChange={ (currency, value) => this.updateToState(currency, value) }
@@ -71,7 +71,7 @@ class Converter extends React.Component {
 
 				<ConverterButton onClick={ () => this.convert() } />
 
-				<ConverterListCurrencies currencies={ this.state.currencies?.data ? this.state.currencies.data.map(c => c.id) : [] } />
+				<ConverterListCurrencies currencies={ this.state.currencies ? this.state.currencies.map(c => c.id) : [] } />
 			</div>
     	);
 	}

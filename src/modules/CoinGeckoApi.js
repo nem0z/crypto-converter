@@ -8,16 +8,14 @@ class CoinGeckoApi {
 
         return fetch(url)
             .then(res => res.json())
-            .then(currencies => ({
-                    data: currencies.map(c => ({
-                        id: c.id,
-                        symbol: c.symbol,
-                        name: c.name,
-                        image: c.image,
-                        price: c.current_price,
-                    })),
-                    time: Date.now(),
-                })
+            .then(currencies => 
+                currencies.flatMap(c => ({
+                    id: c.id,
+                    symbol: c.symbol,
+                    name: c.name,
+                    image: c.image,
+                    price: c.current_price,
+                })),
             );
     }
 
