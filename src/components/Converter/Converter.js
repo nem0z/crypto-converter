@@ -60,7 +60,7 @@ class Converter extends React.Component {
 	convert() {
 		const prices = Object.fromEntries(this.state.currencies.map(c => [c.id, c.price]));
 		
-		const newToValue = prices[this.state.fromCurrency] * this.state.fromValue / prices[this.state.toCurrency];
+		const newToValue = prices[this.state.fromCurrency.id] * this.state.fromValue / prices[this.state.toCurrency.id];
 		this.setState({...this.state, toValue: newToValue});
 	}
 
