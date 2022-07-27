@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/ConverterListCurrencies.css'
 
 class ConverterListCurrencies extends React.Component {
     constructor(props) {
@@ -16,10 +17,15 @@ class ConverterListCurrencies extends React.Component {
     render() {
 
     	return (
-			<div>
+			<div className='listCurrencies'>
                 { console.log(this.props) }
-                <input type="text" onChange={ e => this.updateListCurrencies(e.target.value) } />
-                <ul>
+                <input 
+                    type="text" 
+                    onChange={ e => this.updateListCurrencies(e.target.value) }
+                    className='listCurrenciesInput'
+                 />
+
+                <ul className='listCurrenciesUl'>
                     { (this.state.currencies ?? this.props.currencies).map(c => 
                         <li key={c.id}>
                             <img src={c.image} alt={c.id}></img>

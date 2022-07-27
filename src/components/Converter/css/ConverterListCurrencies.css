@@ -1,0 +1,56 @@
+.listCurrencies {
+
+    width: 40vw;
+    height: 80vh;
+
+    position: absolute;
+    top: 10vh;
+    left: 30vw;
+
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: purple;
+}
+
+.listCurrenciesInput {
+    width: 30vw;
+
+    font-size: 2.5em;
+
+    margin-top: 10vh;
+}
+
+.listCurrenciesUl {
+    width: 30vw;
+
+    overflow: scroll;
+}
+
+.listCurrenciesUl > li {
+    width: 100%;
+    height: 10vh;
+
+    margin-top: 1vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.listCurrenciesUl > li > img{
+    width: 8vh;
+    margin-right: 5vh;
+}
+
+.listCurrenciesUl > li > p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}

@@ -4,7 +4,7 @@ import { ConverterField } from './ConverterField';
 import { ConverterListCurrencies } from './ConverterListCurrencies';
 
 
-import CoinGeckoApi from '../modules/CoinGeckoApi';
+import CoinGeckoApi from '../../modules/CoinGeckoApi';
 
 class Converter extends React.Component {
 	constructor(props) {
