@@ -59,9 +59,14 @@ class Converter extends React.Component {
 
 	convert() {
 		const prices = Object.fromEntries(this.state.currencies.map(c => [c.id, c.price]));
+
+		const flatPrice = price => {
+			const priceLengh = parseInt(price).toString().length;
+			return price.toFixed(6-priceLengh);
+		} 
 		
 		const newToValue = prices[this.state.fromCurrency.id] * this.state.fromValue / prices[this.state.toCurrency.id];
-		this.setState({...this.state, toValue: newToValue});
+		this.setState({...this.state, toValue: flatPrice(newToValue)});
 	}
 
     render() {
