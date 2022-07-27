@@ -18,7 +18,6 @@ class ConverterListCurrencies extends React.Component {
 
     	return (
 			<div className='listCurrencies'>
-                { console.log(this.props) }
                 <input 
                     type="text" 
                     onChange={ e => this.updateListCurrencies(e.target.value) }
@@ -27,7 +26,7 @@ class ConverterListCurrencies extends React.Component {
 
                 <ul className='listCurrenciesUl'>
                     { (this.state.currencies ?? this.props.currencies).map(c => 
-                        <li key={c.id}>
+                        <li key={c.id} onClick={ e => this.props.onSelect(c) }>
                             <img src={c.image} alt={c.id}></img>
                             <p>
                                 <span>{ c.symbol }</span>

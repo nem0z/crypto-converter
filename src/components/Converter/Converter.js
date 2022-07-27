@@ -1,8 +1,6 @@
 import React from 'react';
 import { ConverterButton } from './ConverterButton';
 import { ConverterField } from './ConverterField';
-import { ConverterListCurrencies } from './ConverterListCurrencies';
-
 
 import CoinGeckoApi from '../../modules/CoinGeckoApi';
 
@@ -10,9 +8,9 @@ class Converter extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			fromCurrency: 'bitcoin',
+			fromCurrency: {},
 			fromValue: 0.0,
-			toCurrency: 'usd',
+			toCurrency: {},
 			toValue: 0.0,
 			gecko: new CoinGeckoApi(),
 		};
@@ -24,7 +22,12 @@ class Converter extends React.Component {
 
 	loadCurrencies() {
 		this.state.gecko.getCurrencies().then(currencies => {
-			this.setState({...this.state, currencies: currencies});
+			this.setState({
+				...this.state, 
+				currencies: currencies, 
+				fromCurrency: currencies.find(c => c.symbol === 'BTC'),
+				toCurrency: currencies.find(c => c.symbol === 'USDT'),
+			});
 		});
 	} 
 
@@ -44,6 +47,16 @@ class Converter extends React.Component {
 		});
 	}
 
+	selectFromCurrency(currency) {
+		console.log(this.state);
+		this.setState({...this.state, fromCurrency: currency});
+	}
+
+	selectToCurrency(currency) {
+		console.log(this.state);
+		this.setState({...this.state, toCurrency: currency});
+	}
+
 	convert() {
 		const prices = Object.fromEntries(this.state.currencies.map(c => [c.id, c.price]));
 		
@@ -56,22 +69,23 @@ class Converter extends React.Component {
     	return (
 			<div>
 				<ConverterField 
-					currencies={ this.state.currencies ? this.state.currencies.map(c => c.id) : [] }
+					currencies={ this.state.currencies  ?? [] }
 					currency={ this.state.fromCurrency }
 					value={ this.state.fromValue }
 					onChange={ (currency, value) => this.updateFromState(currency, value) }
+					onSelect={ currency => this.selectFromCurrency(currency) }
 				/>
 
 				<ConverterField 
-					currencies={ this.state.currencies ? this.state.currencies.map(c => c.id) : [] }
+					currencies={ this.state.currencies  ?? [] }
 					currency={ this.state.toCurrency }
 					value={ this.state.toValue }
 					onChange={ (currency, value) => this.updateToState(currency, value) }
+					onSelect={ currency => this.selectToCurrency(currency) }
 				/>
 
 				<ConverterButton onClick={ () => this.convert() } />
 
-				<ConverterListCurrencies currencies={ this.state.currencies  ?? [] } />
 			</div>
     	);
 	}
