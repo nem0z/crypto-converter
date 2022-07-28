@@ -20,40 +20,39 @@ class Converter extends React.Component {
 		this.loadCurrencies();
 	}
 
+	componentDidUpdate(nextProps, nextState) {
+		if(
+			nextState.fromCurrency !== this.state.fromCurrency ||
+			nextState.toCurrency !== this.state.toCurrency ||
+			nextState.fromValue !== this.state.fromValue
+		 ) {
+			this.convert();
+		 }
+	}
+
 	loadCurrencies() {
 		this.state.gecko.getCurrencies().then(currencies => {
 			this.setState({
 				...this.state, 
 				currencies: currencies, 
 				fromCurrency: currencies.find(c => c.symbol === 'BTC'),
-				toCurrency: currencies.find(c => c.symbol === 'USDT'),
+				toCurrency: currencies.find(c => c.symbol === 'USDC'),
 			});
 		});
 	} 
 
-	updateFromState(currency, value) {
+	updateFromState(value) {
 		this.setState({
 			...this.state,
-			fromCurrency: currency,
 			fromValue: value,
 		});
 	}
 
-	updateToState(currency, value) {
-		this.setState({
-			...this.state,
-			toCurrency: currency,
-			toValue: value
-		});
-	}
-
 	selectFromCurrency(currency) {
-		console.log(this.state);
 		this.setState({...this.state, fromCurrency: currency});
 	}
 
 	selectToCurrency(currency) {
-		console.log(this.state);
 		this.setState({...this.state, toCurrency: currency});
 	}
 
@@ -77,7 +76,7 @@ class Converter extends React.Component {
 					currencies={ this.state.currencies  ?? [] }
 					currency={ this.state.fromCurrency }
 					value={ this.state.fromValue }
-					onChange={ (currency, value) => this.updateFromState(currency, value) }
+					onChange={ value => this.updateFromState(value) }
 					onSelect={ currency => this.selectFromCurrency(currency) }
 				/>
 
@@ -85,7 +84,6 @@ class Converter extends React.Component {
 					currencies={ this.state.currencies  ?? [] }
 					currency={ this.state.toCurrency }
 					value={ this.state.toValue }
-					onChange={ (currency, value) => this.updateToState(currency, value) }
 					onSelect={ currency => this.selectToCurrency(currency) }
 				/>
 

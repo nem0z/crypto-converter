@@ -28,7 +28,13 @@ class ConverterField extends React.Component {
     	return (
 			<div>
                 <div className='ConverterField'>
-                    <input type="text" placeholder='0.0' value={this.props.value > 0 ? this.props.value : ''} onChange={e => this.props.onChange(this.props.currency, e.target.value)}/>
+                    <input 
+                        type="text" 
+                        placeholder='0.0' 
+                        value={this.props.value > 0 ? this.props.value : ''} 
+                        onChange={e => this.props.onChange ? this.props.onChange(e.target.value) : 0.0 }
+                    />
+
                     <button onClick={ () => this.showPopUp() }>
                         <img src={this.props.currency.image} alt={this.props.currency.id}></img>
                         <span>{ this.props.currency.symbol }</span>
