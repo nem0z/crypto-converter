@@ -31,7 +31,7 @@ class ConverterField extends React.Component {
                     <input 
                         type="text" 
                         placeholder='0.0' 
-                        value={this.props.value > 0 ? this.props.value : ''} 
+                        value={this.props.value ?? ''} 
                         onChange={e => this.props.onChange ? this.props.onChange(e.target.value) : 0.0 }
                     />
 

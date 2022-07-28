@@ -8,9 +8,9 @@ class Converter extends React.Component {
 		super(props);
 		this.state = {
 			fromCurrency: {},
-			fromValue: 0.0,
+			fromValue: null,
 			toCurrency: {},
-			toValue: 0.0,
+			toValue: null,
 			gecko: new CoinGeckoApi(),
 		};
 	}
