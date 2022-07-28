@@ -1,15 +1,18 @@
 .ConverterField {
-    width: 20vw;
-    height: 10vh;
+    width: 25vw;
+    height: 12vh;
 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+
+    border-radius: 90px;
+
 }
 
 .ConverterField:hover {
-    border: 1px solid  black;
+    border: 1px solid  rgba(0, 0, 0, 0.5);
 }
 
 .ConverterField > input {
@@ -23,6 +26,22 @@
 }
 
 .ConverterField > button {
-    width: 5vw;
+    width: 8vw;
     height: 5vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+    border-radius: 45px;
+    border: none;
+}
+
+.ConverterField > button:hover {
+    background-color: grey;
+}
+
+.ConverterField > button > img {
+    height: 80%;
 }
