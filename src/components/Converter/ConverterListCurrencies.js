@@ -4,10 +4,26 @@ import './css/ConverterListCurrencies.css'
 class ConverterListCurrencies extends React.Component {
     constructor(props) {
         super(props);
+        this.ref = React.createRef();
+        this.handleClickOutside = this.handleClickOutside.bind(this);
         this.state = {
             currencies: null,
         }
     }
+
+    handleClickOutside(event) {
+        if (this.ref.current && !this.ref.current.contains(event.target)) {
+          this.props.onClose && this.props.onClose();
+        }
+      };
+    
+      componentDidMount() {
+        document.addEventListener('click', this.handleClickOutside, true);
+      }
+    
+      componentWillUnmount() {
+        document.removeEventListener('click', this.handleClickOutside, true);
+      };
 
     updateListCurrencies(inputValue) {
         const filteredCurrencies = this.props.currencies.filter(c => c.name.includes(inputValue) || c.id.includes(inputValue) || c.symbol.includes(inputValue));
@@ -17,8 +33,9 @@ class ConverterListCurrencies extends React.Component {
     render() {
 
     	return (
-			<div className='listCurrencies'>
+			<div className='listCurrencies' ref={this.ref}>
                 <input 
+                    autoFocus
                     type="text" 
                     onChange={ e => this.updateListCurrencies(e.target.value) }
                     className='listCurrenciesInput'

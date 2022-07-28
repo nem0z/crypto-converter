@@ -16,12 +16,12 @@ class Converter extends React.Component {
 		};
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.loadCurrencies();
 	}
 
 	loadCurrencies() {
-		this.state.gecko.getCurrencies().then(currencies => {
+		this.state.gecko.getCurrencies().then(currencies => {
 			this.setState({
 				...this.state, 
 				currencies: currencies, 
