@@ -1,5 +1,4 @@
 import React from 'react';
-import { ConverterButton } from './ConverterButton';
 import { ConverterField } from './ConverterField';
 
 import CoinGeckoApi from '../../modules/CoinGeckoApi';
@@ -86,8 +85,6 @@ class Converter extends React.Component {
 					value={ this.state.toValue }
 					onSelect={ currency => this.selectToCurrency(currency) }
 				/>
-
-				<ConverterButton onClick={ () => this.convert() } />
 
 			</div>
     	);
