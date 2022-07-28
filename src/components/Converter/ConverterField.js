@@ -1,5 +1,6 @@
 import React from 'react';
 import { ConverterListCurrencies } from './ConverterListCurrencies';
+import './css/ConverterField.css';
 
 class ConverterField extends React.Component {
     constructor(props) {
@@ -26,9 +27,10 @@ class ConverterField extends React.Component {
 
     	return (
 			<div>
-                <button onClick={ () => this.showPopUp() }>{ this.props.currency.symbol }</button>
-
-                <input type="number" value={this.props.value} onChange={e => this.props.onChange(this.props.currency, e.target.value)}/>
+                <div className='ConverterField'>
+                    <input type="text" value={this.props.value} onChange={e => this.props.onChange(this.props.currency, e.target.value)}/>
+                    <button onClick={ () => this.showPopUp() }>{ this.props.currency.symbol }</button>
+                </div>
             
                 { 
                     this.state.showPopUp ? 

@@ -1,0 +1,28 @@
+.ConverterField {
+    width: 20vw;
+    height: 10vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.ConverterField:hover {
+    border: 1px solid  black;
+}
+
+.ConverterField > input {
+    width: 10vw;
+    height: 8vh;
+
+    font-size: 2em;
+
+    outline: none; /* remove default style */
+    border: none; /* remove default style */
+}
+
+.ConverterField > button {
+    width: 5vw;
+    height: 5vh;
+}

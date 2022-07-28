@@ -1,9 +1,15 @@
 class CoinGeckoApi {
-    constructor() {
+    constructor(nbrCurrencies = 100, validDuration = 0) {
         this.baseUrl = 'https://api.coingecko.com/api/v3';
+        this.nbrCurrencies = nbrCurrencies;
+        this.validDuration = validDuration;
+        this.currencies = [];
+        this.lastUpdate = validDuration + 1;
     }
 
     getCurrencies(target = 'usd') {
+        if(this.lastUpdate + this.validDuration > Date.now()) return this.currencies;
+
         let url = this.baseUrl + `/coins/markets?vs_currency=${target}&order=market_cap_desc&per_page=250`;
 
         return fetch(url)
@@ -16,7 +22,12 @@ class CoinGeckoApi {
                     image: c.image,
                     price: c.current_price,
                 })),
-            );
+            )
+            .then(data => {
+                this.currencies = data;
+                this.lastUpdate = Date.now();
+                return data;
+            });
     }
 
 }
