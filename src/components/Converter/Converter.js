@@ -3,6 +3,8 @@ import { ConverterField } from './ConverterField';
 
 import CoinGeckoApi from '../../modules/CoinGeckoApi';
 
+import './css/Converter.css';
+
 class Converter extends React.Component {
 	constructor(props) {
 		super(props);
@@ -70,7 +72,7 @@ class Converter extends React.Component {
     render() {
 		
     	return (
-			<div>
+			<div class="Converter">
 				<ConverterField 
 					currencies={ this.state.currencies  ?? [] }
 					currency={ this.state.fromCurrency }

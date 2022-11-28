@@ -1,0 +1,14 @@
+.Converter {
+    height: 40vh;
+    width: 35vw;
+
+    border-radius: 45px;
+    border: 2px solid rgb(112, 160, 50);
+
+    background-color: rgb(141, 198, 71);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
