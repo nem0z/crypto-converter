@@ -1,5 +1,4 @@
 .listCurrencies {
-
     width: 40vw;
     height: 80vh;
 
@@ -7,35 +6,51 @@
     top: 10vh;
     left: 30vw;
 
+    padding: 0;
+
+    border-radius: 45px;
+    border: 2px solid rgb(112, 160, 50);
+    background-color: rgb(141, 198, 71);
+
     z-index: 1000;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
-    background-color: rgba(225, 225, 225, 1);
 }
 
 .listCurrenciesInput {
+    height: 5vh;
     width: 30vw;
 
-    font-size: 2.5em;
+    border-radius: 45px;
 
-    margin-top: 10vh;
+    font-size: 1.5em;
+
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    padding: .8vw 2vw;
+
+    outline: none; /* remove default style */
+    border: none; /* remove default style */
+}
+
+.listCurrenciesInput:focus, .listCurrenciesInput:hover {
+    box-shadow:inset 0px 0px 0px 1px rgb(112, 160, 50);
 }
 
 .listCurrenciesUl {
-    width: 30vw;
+    width: 100%;
+    height: 50vh;
 
     overflow-y: scroll;
 }
 
 .listCurrenciesUl > li {
-    width: 100%;
     height: 10vh;
 
-    margin-top: 1vh;
+    padding: 0 5vw;
 
     display: flex;
     flex-direction: row;
@@ -43,12 +58,20 @@
     justify-content: flex-start;
 }
 
-.listCurrenciesUl > li > img{
+.listCurrenciesUl > li:hover {
+    cursor: pointer;
+    background-color: rgb(112, 160, 50);
+}
+
+.listCurrenciesUl > li > img {
     width: 8vh;
     margin-right: 5vh;
 }
 
 .listCurrenciesUl > li > p {
+    font-size: 1.5em;
+    color: rgba(0, 0, 0, .8);
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;

@@ -39,6 +39,7 @@ class ConverterListCurrencies extends React.Component {
                     type="text" 
                     onChange={ e => this.updateListCurrencies(e.target.value) }
                     className='listCurrenciesInput'
+                    placeholder='Search by token or project name'
                  />
 
                 <ul className='listCurrenciesUl'>
