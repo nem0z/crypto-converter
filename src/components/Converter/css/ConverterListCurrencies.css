@@ -45,7 +45,13 @@
     height: 50vh;
 
     overflow-y: scroll;
+    -ms-overflow-style: none; /* IE 11 */
+    scrollbar-width: none; /* Firefox 64 */
 }
+
+.listCurrenciesUl::-webkit-scrollbar {
+    display: none; /* chromium */
+  }
 
 .listCurrenciesUl > li {
     height: 10vh;
@@ -56,6 +62,29 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+}
+
+.wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wrapper > p {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.wrapper > p:nth-child(1) {
+    align-items: flex-start;
+}
+
+.wrapper > p:nth-child(2) {
+    align-items: flex-end;
 }
 
 .listCurrenciesUl > li:hover {

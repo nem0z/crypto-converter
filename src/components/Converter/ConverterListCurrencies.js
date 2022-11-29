@@ -46,10 +46,16 @@ class ConverterListCurrencies extends React.Component {
                     { (this.state.currencies ?? this.props.currencies).map(c => 
                         <li key={c.id} onClick={ e => this.props.onSelect(c) }>
                             <img src={c.image} alt={c.id}></img>
-                            <p>
-                                <span>{ c.symbol }</span>
-                                <span>{ c.name }</span>
-                            </p>
+                            <div className='wrapper'>
+                                <p>
+                                    <span>{ c.symbol }</span>
+                                    <span>{ c.name }</span>
+                                </p>
+                                <p>
+                                    <span>#{ c.rank }</span>
+                                    <span>{ c.price }$</span>
+                                </p>
+                            </div>
                         </li>
                     ) }
                 </ul>

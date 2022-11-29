@@ -72,7 +72,7 @@ class Converter extends React.Component {
     render() {
 		
     	return (
-			<div class="Converter">
+			<div className="Converter">
 				<ConverterField 
 					currencies={ this.state.currencies  ?? [] }
 					currency={ this.state.fromCurrency }
