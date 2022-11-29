@@ -42,6 +42,8 @@ class ConverterListCurrencies extends React.Component {
                     placeholder='Search by token or project name'
                  />
 
+                <div className='hr'></div>
+
                 <ul className='listCurrenciesUl'>
                     { (this.state.currencies ?? this.props.currencies).map(c => 
                         <li key={c.id} onClick={ e => this.props.onSelect(c) }>
@@ -59,6 +61,9 @@ class ConverterListCurrencies extends React.Component {
                         </li>
                     ) }
                 </ul>
+
+                <div className='hr'></div>
+                <div className='lastUpdate'>Last price update : { new Date(this.props.lastUpdate).toLocaleString() }</div>
 
             </div>
     	);
