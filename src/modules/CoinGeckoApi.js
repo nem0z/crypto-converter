@@ -24,10 +24,10 @@ class CoinGeckoApi {
                     price: c.current_price,
                 })),
             )
-            .then(data => {
-                this.currencies = data;
+            .then(currencies => {
+                this.currencies = currencies;
                 this.lastUpdate = Date.now();
-                return data;
+                return { currencies: currencies, lastUpdate: this.lastUpdate };
             });
     }
 

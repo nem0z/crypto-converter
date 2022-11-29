@@ -32,12 +32,13 @@ class Converter extends React.Component {
 	}
 
 	loadCurrencies() {
-		this.state.gecko.getCurrencies().then(currencies => {
+		this.state.gecko.getCurrencies().then(data => {
 			this.setState({
 				...this.state, 
-				currencies: currencies, 
-				fromCurrency: currencies.find(c => c.symbol === 'BTC'),
-				toCurrency: currencies.find(c => c.symbol === 'USDC'),
+				currencies: data.currencies, 
+				fromCurrency: data.currencies.find(c => c.symbol === 'BTC'),
+				toCurrency: data.currencies.find(c => c.symbol === 'USDC'),
+				lastUpdate: data.lastUpdate
 			});
 		});
 	} 
@@ -73,10 +74,13 @@ class Converter extends React.Component {
 		
     	return (
 			<div className="Converter">
+				<h1 className='title'>SwapGecko</h1>
+
 				<ConverterField 
 					currencies={ this.state.currencies  ?? [] }
 					currency={ this.state.fromCurrency }
 					value={ this.state.fromValue }
+					lastUpdate= { this.state.lastUpdate }
 					onChange={ value => this.updateFromState(value) }
 					onSelect={ currency => this.selectFromCurrency(currency) }
 				/>
@@ -84,6 +88,7 @@ class Converter extends React.Component {
 				<ConverterField 
 					currencies={ this.state.currencies  ?? [] }
 					currency={ this.state.toCurrency }
+					lastUpdate= { this.state.lastUpdate }
 					value={ this.state.toValue }
 					onSelect={ currency => this.selectToCurrency(currency) }
 				/>

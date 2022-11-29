@@ -48,6 +48,7 @@ class ConverterField extends React.Component {
                         currencies={ this.props.currencies  ?? [] }
                         onSelect={ currency => this.selectCurrency(currency) }
                         onClose={ () => this.hidePopUp() }
+                        lastUpdate={ this.props.lastUpdate }
                     /> :
                     null
                 }
