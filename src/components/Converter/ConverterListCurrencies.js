@@ -26,7 +26,14 @@ class ConverterListCurrencies extends React.Component {
       };
 
     updateListCurrencies(inputValue) {
-        const filteredCurrencies = this.props.currencies.filter(c => c.name.includes(inputValue) || c.id.includes(inputValue) || c.symbol.includes(inputValue));
+        const lowerValue = inputValue.toLowerCase()
+        const filteredCurrencies = 
+            this.props.currencies
+                .filter(c => 
+                    c.name.toLowerCase().includes(lowerValue) || 
+                    c.id.toLowerCase().includes(lowerValue) || 
+                    c.symbol.toLowerCase().includes(lowerValue)
+                );
         this.setState({currencies: filteredCurrencies});
     }
 
