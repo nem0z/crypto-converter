@@ -71,6 +71,7 @@ class Converter extends React.Component {
 	}
 
     render() {
+		// this.loadCurrencies();
 		
     	return (
 			<div className="Converter">
