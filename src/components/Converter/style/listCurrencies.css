@@ -1,0 +1,123 @@
+.listCurrencies {
+    width: 40vw;
+    height: 80vh;
+
+    position: absolute;
+    top: 10vh;
+    left: 30vw;
+
+    padding: 0;
+
+    border-radius: 45px;
+    border: 2px solid rgb(112, 160, 50);
+    background-color: rgb(141, 198, 71);
+
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.listCurrenciesInput {
+    height: 5vh;
+    width: 30vw;
+
+    border-radius: 45px;
+
+    font-size: 1.5em;
+
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    padding: .8vw 2vw;
+
+    outline: none; /* remove default style */
+    border: none; /* remove default style */
+}
+
+.listCurrenciesInput:focus, .listCurrenciesInput:hover {
+    box-shadow:inset 0px 0px 0px 1px rgb(112, 160, 50);
+}
+
+.listCurrenciesUl {
+    height: 55vh;
+    width: 100%;
+
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* IE 11 */
+    scrollbar-width: none; /* Firefox 64 */
+}
+
+.hr {
+    width: 100%;
+    height: 2px;
+
+    background-color:rgb(112, 160, 50)
+}
+
+.listCurrenciesUl::-webkit-scrollbar {
+    display: none; /* chromium */
+  }
+
+.listCurrenciesUl > li {
+    height: 11vh;
+    padding: 0 5vw;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.wrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wrapper > p {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.wrapper > p:nth-child(1) {
+    align-items: flex-start;
+}
+
+.wrapper > p:nth-child(2) {
+    align-items: flex-end;
+}
+
+.listCurrenciesUl > li:hover {
+    cursor: pointer;
+    background-color: rgba(112, 160, 50, .5);
+}
+
+.listCurrenciesUl > li > img {
+    width: 8vh;
+    margin-right: 5vh;
+}
+
+.listCurrenciesUl > li > p {
+    font-size: 1.5em;
+    color: rgba(0, 0, 0, .8);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.lastUpdate {
+    height: 5vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
