@@ -17,8 +17,10 @@ export default function({currencies, current, onChange}: propsConvertField) {
     const formatAmount = (amount: number) => {
         const strAmount = amount.toString();
         const [num, float, ...rest] = strAmount.split('.');
+        console.log({num, float, rest});
         
-        if(float === undefined) return num;
+        
+        if(float === undefined || num.length >= 5) return num;
         return `${num}${ num.length < 5 ? '.' : '' }${ float.slice(0, 5-num.length) }`;
     }
 
@@ -28,7 +30,7 @@ export default function({currencies, current, onChange}: propsConvertField) {
                 <input 
                     type="text" 
                     placeholder='0.0' 
-                    value={ formatAmount(current.amount ?? 0) || "" } 
+                    value={ current.amount ? formatAmount(current.amount) : "" }
                     onChange={ e => onChange({...current, amount: parseInt(e.target.value) || 0 }) }
                 />
                 <button onClick={ () => setShowList(true) }>
