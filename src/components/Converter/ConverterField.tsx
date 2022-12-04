@@ -16,12 +16,15 @@ export default function({currencies, current, onChange}: propsConvertField) {
 
     const formatAmount = (amount: number) => {
         const strAmount = amount.toString();
-        const [num, float, ...rest] = strAmount.split('.');
-        console.log({num, float, rest});
-        
+        const [num, float, ...rest] = strAmount.split('.');    
         
         if(float === undefined || num.length >= 5) return num;
-        return `${num}${ num.length < 5 ? '.' : '' }${ float.slice(0, 5-num.length) }`;
+        
+        const maxFloat = 5 - num.length + (num == "0" ? 1 : 0);
+        const regex = "^[0]*[0-9]{1,n}".replace("n", maxFloat.toString());
+        const sliceFloat = float.match(regex);
+
+        return `${num}.${ sliceFloat }`;
     }
 
     return (
