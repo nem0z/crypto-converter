@@ -10,7 +10,7 @@ import { currency, propsConverter, selectedCurrency } from './types';
 // css
 import './style/converter.css';
 
-export default function({currencies} : propsConverter) {        
+export default function({currencies} : propsConverter) {     
 
     const [from, setFrom] = useState<selectedCurrency>({
         ...(currencies.find(c => c.symb == 'BTC') ?? {} as currency),

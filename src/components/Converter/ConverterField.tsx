@@ -14,13 +14,21 @@ import './style/converterField.css';
 export default function({currencies, current, onChange}: propsConvertField) {
     const [showList, setShowList] = useState<boolean>(false);
 
+    const formatAmount = (amount: number) => {
+        const strAmount = amount.toString();
+        const [num, float, ...rest] = strAmount.split('.');
+        
+        if(float === undefined) return num;
+        return `${num}${ num.length < 5 ? '.' : '' }${ float.slice(0, 5-num.length) }`;
+    }
+
     return (
         <div>
             <div className='ConverterField'>
                 <input 
                     type="text" 
                     placeholder='0.0' 
-                    value={ current.amount ?? "" } 
+                    value={ formatAmount(current.amount ?? 0) || "" } 
                     onChange={ e => onChange({...current, amount: parseInt(e.target.value) || 0 }) }
                 />
                 <button onClick={ () => setShowList(true) }>
