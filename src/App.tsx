@@ -13,7 +13,7 @@ function App() {
 	const clientAPI = new CoinGeckoApi();
 	const [currencies, setCurrencies] = useState<currency[]>([]);
 
-	useEffect(() => {		
+	useEffect(() => {				
 		clientAPI.get()
 			.then(setCurrencies);
 	}, []);

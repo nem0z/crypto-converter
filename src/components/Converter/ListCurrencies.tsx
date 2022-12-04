@@ -1,5 +1,6 @@
 // react
 import { useState, useEffect, useRef } from 'react';
+import { KeyboardEvent } from 'react';
 
 // types
 import { currency, propsConverterList } from './types';
@@ -28,6 +29,13 @@ export default function({currencies, onSelect, onClose}: propsConverterList) {
         onClose();
     }
 
+    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+        if(e.key == 'Enter' && match[0]) {
+            e.preventDefault();
+            handleSelect(match[0]);
+        }
+    }
+
     useEffect(() => {
         const handleClickOutside = (e: any) => {
             if (ref.current && !ref.current.contains(e.target)) {
@@ -47,6 +55,7 @@ export default function({currencies, onSelect, onClose}: propsConverterList) {
                     autoFocus
                     type="text" 
                     onChange={ e => filter(e.target.value) }
+                    onKeyDown={ e => handleKeyDown(e) }
                     className='listCurrenciesInput'
                     placeholder='Search by token or project name'
                  />
