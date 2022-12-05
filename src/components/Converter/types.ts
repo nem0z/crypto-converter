@@ -8,7 +8,7 @@ export type currency = {
 }
 
 export type selectedCurrency = currency & {
-    amount: number | null;
+    amount: string;
 };
 
 export type propsConverter = {
