@@ -25,7 +25,7 @@ export default function({currencies} : propsConverter) {
         const fromPrice = from.price ?? currencies.find(c => c.symb == from.symb)?.price ?? 0;
         const fromAmount = parseFloat(from.amount) ?? 0;      
         const toPrice = to.price ?? currencies.find(c => c.symb == to.symb)?.price ?? 0;
-        const amount = fromAmount * (fromPrice / toPrice);
+        const amount = (fromAmount * (fromPrice / toPrice)) || "";
 
         setTo((prev: selectedCurrency) => ({...prev, amount: amount.toString()}));
     }, [from, to.amount, to.price]);
