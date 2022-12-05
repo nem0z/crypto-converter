@@ -15,7 +15,7 @@ export default function({currencies, current, onChange}: propsConvertField) {
     const [showList, setShowList] = useState<boolean>(false);
 
     const formatAmount = (amount: string) => {
-        const [num, float, ...rest] = amount.split('.'); // rest might be useless
+        const [num, float] = amount.split('.');
         const lastChar = amount.at(-1) == '.' ? '.' : "";
         
         if(!float || num.length >= 5) return num + lastChar;
