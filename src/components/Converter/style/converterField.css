@@ -1,0 +1,51 @@
+.ConverterField {
+    width: 25vw;
+    height: 12vh;
+
+    padding: 0 1vw;
+
+    background-color: white;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    border-radius: 90px;
+}
+
+.ConverterField:hover {
+    box-shadow:inset 0px 0px 0px 1px rgb(112, 160, 50);
+}
+
+.ConverterField > input {
+    width: 12vw;
+    height: 8vh;
+
+    font-size: 2em;
+    color:rgba(0, 0, 0, .66);
+
+    outline: none; /* remove default style */
+    border: none; /* remove default style */
+}
+
+.ConverterField > button {
+    width: 8vw;
+    height: 5vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+    border-radius: 45px;
+    border: none;
+}
+
+.ConverterField > button:hover {
+    background-color: rgba(50, 50, 50, .3);
+}
+
+.ConverterField > button > img {
+    height: 80%;
+}
