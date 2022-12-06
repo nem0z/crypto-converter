@@ -77,15 +77,15 @@ export default function({currencies, onSelect, onClose}: propsConverterList) {
     }
 
     useEffect(() => {
-        const handleClickOutside = (e: any) => { // fix any
-            if (ref.current && !ref.current.contains(e.target)) {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (ref.current && !ref.current.contains(e.target as Node)) {
                 onClose();
             }
         }
-        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("mousedown", e => handleClickOutside(e));
 
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("mousedown", e => handleClickOutside(e));
         };
       }, [ref]);
 
