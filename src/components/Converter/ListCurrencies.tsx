@@ -45,21 +45,12 @@ export default function({currencies, onSelect, onClose}: propsConverterList) {
                 setSelected(prev => prev+1);
 
                 if(ul.current && li.current) {
-                    // console.log(ul.current.offsetTop);
-                    // console.log(li.current.offsetTop);
-                    // console.log(li.current.clientHeight);
-
                     const liHeight = li.current.clientHeight;
                     const liTop = li.current.offsetTop;
                     const ulTop = ul.current.offsetTop;
                     const ulScroll = ul.current.scrollTop;
-                    // liTop != ulTop && (liTop - ulTop) % (4*liHeight) == 0
-                    // ulScroll + liTop > 4*liHeight
-
-                    console.log((liTop - (ulScroll + ulTop)) % (4*liHeight));
                     
-                    if(((liTop - (ulScroll + ulTop)) % (4*liHeight)) < 64) {
-                        console.log("ok");
+                    if(((liTop - (ulScroll + ulTop)) % (3*liHeight)) < liHeight) {
                         ul.current.scroll(0, liHeight*(selected-3));
                     }           
                 }
@@ -77,8 +68,7 @@ export default function({currencies, onSelect, onClose}: propsConverterList) {
                     const ulTop = ul.current.offsetTop;
                     const ulScroll = ul.current.scrollTop;
 
-                    if(((liTop - (ulScroll + ulTop)) % (4*liHeight)) < 64) {
-                        console.log("ok");
+                    if(((liTop - (ulScroll + ulTop)) % (3*liHeight)) < liHeight) {
                         ul.current.scroll(0, liHeight*(selected-5));
                     } 
                 }
