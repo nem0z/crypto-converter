@@ -93,7 +93,7 @@
     align-items: flex-end;
 }
 
-.listCurrenciesUl > li:hover {
+.active {
     cursor: pointer;
     background-color: rgba(112, 160, 50, .5);
 }
